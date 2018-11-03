@@ -1,0 +1,8 @@
+---- SysTick_Config Matches (8 in 3 files) ----
+Core_cm3.h (f:\finder\stm32_project\wy\wy_main\wy_main\libraries\cmsis):static __INLINE uint32_t SysTick_Config(uint32_t ticks)
+Systick_Dirve.c (f:\finder\stm32_project\wy\wy_main\wy_main\user\systick_dirve):	SysTick_Config(72000);
+Systick_Dirve.c (f:\finder\stm32_project\wy\wy_main\wy_main\user\systick_dirve):	SysTick_Config(72);
+Temp_project.htm (f:\finder\stm32_project\wy\wy_main\wy_main\project\objects):<BR><BR>[Stack]<UL><LI>Max Depth = 28<LI>Call Chain = Delay_us &rArr; SysTick_Config
+Temp_project.htm (f:\finder\stm32_project\wy\wy_main\wy_main\project\objects):<BR>[Calls]<UL><LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysTick_Config
+Temp_project.htm (f:\finder\stm32_project\wy\wy_main\wy_main\project\objects):<P><STRONG><a name="[7b]"></a>SysTick_Config</STRONG> (Thumb, 76 bytes, Stack size 12 bytes, systick_dirve.o(i.SysTick_Config))
+Temp_project.htm (f:\finder\stm32_project\wy\wy_main\wy_main\project\objects):<BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = SysTick_Config

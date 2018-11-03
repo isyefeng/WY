@@ -50,3 +50,6 @@
 .\objects\os_cpu_c.o: ..\User\OSP_fifo.h
 .\objects\os_cpu_c.o: ..\SYSTEM\delay\delay.h
 .\objects\os_cpu_c.o: ..\SYSTEM\sys\sys.h
+.\objects\os_cpu_c.o: ..\User\AdvanceTim\bsp_AdvanceTim.h
+.\objects\os_cpu_c.o: ..\User\DS18B20_Drive\DS18B20_Drive.h
+.\objects\os_cpu_c.o: ..\User\os_task_create.h

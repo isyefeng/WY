@@ -37,6 +37,8 @@
 ".\objects\dma_drive.o"
 ".\objects\hc_05_drive.o"
 ".\objects\osp_fifo.o"
+".\objects\bsp_advancetim.o"
+".\objects\ds18b20_drive.o"
 ".\objects\os_core.o"
 ".\objects\os_flag.o"
 ".\objects\os_mbox.o"

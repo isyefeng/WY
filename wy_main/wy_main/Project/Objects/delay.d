@@ -50,3 +50,6 @@
 .\objects\delay.o: ..\User\DMA_Drive\DMA_Drive.h
 .\objects\delay.o: ..\User\HC_05_Drive\hc_05_drive.h
 .\objects\delay.o: ..\User\OSP_fifo.h
+.\objects\delay.o: ..\User\AdvanceTim\bsp_AdvanceTim.h
+.\objects\delay.o: ..\User\DS18B20_Drive\DS18B20_Drive.h
+.\objects\delay.o: ..\User\os_task_create.h

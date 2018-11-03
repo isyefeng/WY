@@ -50,3 +50,6 @@
 .\objects\main.o: ..\User\OSP_fifo.h
 .\objects\main.o: ..\SYSTEM\delay\delay.h
 .\objects\main.o: ..\SYSTEM\sys\sys.h
+.\objects\main.o: ..\User\AdvanceTim\bsp_AdvanceTim.h
+.\objects\main.o: ..\User\DS18B20_Drive\DS18B20_Drive.h
+.\objects\main.o: ..\User\os_task_create.h

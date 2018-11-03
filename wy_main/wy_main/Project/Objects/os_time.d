@@ -40,7 +40,6 @@
 .\objects\os_time.o: ..\Libraries\STM32F10x_StdPeriph_Driver\inc\misc.h
 .\objects\os_time.o: ..\User\LED_Drive\LED.h
 .\objects\os_time.o: ..\User\KEY_Drive\key_drive.h
-.\objects\os_time.o: ..\UCOSII\CONFIG\includes.h
 .\objects\os_time.o: ..\User\EXTI_Drive\EXTI_Dirve.h
 .\objects\os_time.o: ..\User\BUZ_Drive\BUZ_Dirve.h
 .\objects\os_time.o: ..\User\Systick_Dirve\Systick_Dirve.h
@@ -49,5 +48,9 @@
 .\objects\os_time.o: ..\User\DMA_Drive\DMA_Drive.h
 .\objects\os_time.o: ..\User\HC_05_Drive\hc_05_drive.h
 .\objects\os_time.o: ..\User\OSP_fifo.h
+.\objects\os_time.o: ..\UCOSII\CONFIG\includes.h
 .\objects\os_time.o: ..\SYSTEM\delay\delay.h
 .\objects\os_time.o: ..\SYSTEM\sys\sys.h
+.\objects\os_time.o: ..\User\AdvanceTim\bsp_AdvanceTim.h
+.\objects\os_time.o: ..\User\DS18B20_Drive\DS18B20_Drive.h
+.\objects\os_time.o: ..\User\os_task_create.h
