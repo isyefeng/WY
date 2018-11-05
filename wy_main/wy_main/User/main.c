@@ -44,6 +44,8 @@ void global_drive_init(void)
 	LED_G_Config();
 	LED_R_Config();
 	USART_Config();
+	Key1_Init();
+	Key2_Init();
 	ADVANCE_TIM_Init();
 }
 

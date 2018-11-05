@@ -12,6 +12,12 @@
 #define            ADVANCE_TIM                   TIM1
 #define            ADVANCE_TIM_APBxClock_FUN     RCC_APB2PeriphClockCmd
 #define            ADVANCE_TIM_CLK               RCC_APB2Periph_TIM1
+
+#define            ADVANCE_TIM8                   TIM8
+#define            ADVANCE_TIM8_APBxClock_FUN     RCC_APB2PeriphClockCmd
+#define            ADVANCE_TIM8_CLK               RCC_APB2Periph_TIM8
+
+
 // PWM 信号的频率 F = TIM_CLK/{(ARR+1)*(PSC+1)}
 #define            ADVANCE_TIM_PERIOD            (1000-1)
 #define            ADVANCE_TIM_PSC               (720-1)
@@ -20,25 +26,25 @@
 #define            ADVANCE_TIM_IRQ               TIM1_UP_IRQn
 #define            ADVANCE_TIM_IRQHandler        TIM1_UP_IRQHandler
 
-// TIM1 输出比较通道
+// TIM1 输出PWM通道
 #define            ADVANCE_TIM_CH1_GPIO_CLK      RCC_APB2Periph_GPIOA
 #define            ADVANCE_TIM_CH1_PORT          GPIOA
 #define            ADVANCE_TIM_CH1_PIN           GPIO_Pin_8
 
-// TIM1 输出比较通道的互补通道
-#define            ADVANCE_TIM_CH1N_GPIO_CLK      RCC_APB2Periph_GPIOB
-#define            ADVANCE_TIM_CH1N_PORT          GPIOB
-#define            ADVANCE_TIM_CH1N_PIN           GPIO_Pin_13
+// TIM8 输出PWM通道
+#define            ADVANCE_TIM8_CH1_GPIO_CLK      RCC_APB2Periph_GPIOC
+#define            ADVANCE_TIM8_CH1_PORT         	    GPIOC
+#define            ADVANCE_TIM8_CH1_PIN         	    GPIO_Pin_6
 
-// TIM1 输出比较通道的刹车通道
-#define            ADVANCE_TIM_BKIN_GPIO_CLK      RCC_APB2Periph_GPIOB
-#define            ADVANCE_TIM_BKIN_PORT          GPIOB
-#define            ADVANCE_TIM_BKIN_PIN           GPIO_Pin_12
+/*电机1方向控制引脚*/
+#define 		MOTO1_PIR_GPIO_CLK			RCC_APB2Periph_GPIOB
+#define		MOTO1_PIR_GPIO_PIN			GPIO_Pin_6
+#define 		MOTO1_PIR_GPIO_PORT			GPIOB
 
-/*电机方向控制引脚*/
-#define 		MOTO_GPIO_CLK			RCC_APB2Periph_GPIOB
-#define		MOTO_GPIO_PIN			GPIO_Pin_6
-#define 		MOTO_GPIO_PORT			GPIOB
+/*电机2方向控制引脚*/
+#define		MOTO2_PIR_GPIO_CLK			RCC_APB2Periph_GPIOB
+#define		MOTO2_PIR_GPIO_PIN			GPIO_Pin_12
+#define 		MOTO2_PIR_GPIO_PORT			GPIOB
 
 #define 	MOTOR_ANGLE 		90
 #define	MOTOR_ON()			TIM_Cmd(ADVANCE_TIM, ENABLE);	
@@ -48,7 +54,7 @@
 /**************************函数声明********************************/
 
 void ADVANCE_TIM_Init(void);
-void Moto_rotate_angle(uint16_t offset);
+void Moto1_rotate_angle(uint16_t offset);
 void Motor_tim_config(uint16_t offset);
 uint8_t Motor_switch(void);
 uint8_t PWM_TUGO(void);

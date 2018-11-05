@@ -38,6 +38,10 @@
 #include "DS18B20_Drive.h"
 #include "os_task_create.h"
 
+
+#define	TURE	1
+#define	FLASE	0
+
 #endif
 
 
