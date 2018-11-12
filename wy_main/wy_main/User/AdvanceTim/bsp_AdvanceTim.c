@@ -1,7 +1,13 @@
-#include "bsp_AdvanceTim.h" 
-#include "Systick_Dirve.h"
-#include "LED.h"
 #include "Includes.h"
+
+float		 g_moto1_angle = 0;		//电机1角度
+float		 g_moto2_angle = 0;		//电机2角度
+
+uint8_t 	m_moto1_flag = 0;
+uint8_t 	m_moto2_flag = 0;
+
+uint8_t 	m_moto1_pwm = 0;
+uint8_t 	m_moto2_pwm = 0;
 
 static void MOTO_Drive_GPIO_Config(void)
 {
@@ -65,29 +71,6 @@ static void ADVANCE_TIM_GPIO_Config(void)
 // PWM 信号的周期 T = (ARR+1) * (1/CLK_cnt) = (ARR+1)*(PSC+1) / 72M
 // 占空比P=CCR/(ARR+1)
 
-
-/**********************电机1*********************************/
-void Motor_tim_config(uint16_t offset)
-{
-	// 开启定时器时钟,即内部时钟CK_INT=72M
-	ADVANCE_TIM_APBxClock_FUN(ADVANCE_TIM_CLK,ENABLE);
-
-/*--------------------时基结构体初始化-------------------------*/
-	TIM_TimeBaseInitTypeDef  TIM_TimeBaseStructure;
-	// 自动重装载寄存器的值，累计TIM_Period+1个频率后产生一个更新或者中断
-	TIM_TimeBaseStructure.TIM_Period=ADVANCE_TIM_PERIOD;	
-	// 驱动CNT计数器的时钟 = Fck_int/(psc+1)
-	TIM_TimeBaseStructure.TIM_Prescaler= ADVANCE_TIM_PSC;	
-	// 时钟分频因子 ，配置死区时间时需要用到
-	TIM_TimeBaseStructure.TIM_ClockDivision=TIM_CKD_DIV1;		
-	// 计数器计数模式，设置为向上计数
-	TIM_TimeBaseStructure.TIM_CounterMode=TIM_CounterMode_Up;		
-	// 重复计数器的值，没用到不用管
-	TIM_TimeBaseStructure.TIM_RepetitionCounter=offset;	
-	// 初始化定时器
-	TIM_TimeBaseInit(ADVANCE_TIM, &TIM_TimeBaseStructure);
-}
-
 static void ADVANCE_TIM_Mode_Config(void)
 {
   // 开启定时器时钟,即内部时钟CK_INT=72M
@@ -147,25 +130,9 @@ static void Moto_pwm_nvic_config(void)
 
 
 /***********************电机2******************************/
-void Motor_tim8_config(uint16_t offset)
+void Motor_tim8_config(char offset)
 {
-	// 开启定时器时钟,即内部时钟CK_INT=72M
-	ADVANCE_TIM_APBxClock_FUN(ADVANCE_TIM8_CLK,ENABLE);
-
-/*--------------------时基结构体初始化-------------------------*/
-	TIM_TimeBaseInitTypeDef  TIM_TimeBaseStructure;
-	// 自动重装载寄存器的值，累计TIM_Period+1个频率后产生一个更新或者中断
-	TIM_TimeBaseStructure.TIM_Period=ADVANCE_TIM_PERIOD;	
-	// 驱动CNT计数器的时钟 = Fck_int/(psc+1)
-	TIM_TimeBaseStructure.TIM_Prescaler= ADVANCE_TIM_PSC;	
-	// 时钟分频因子 ，配置死区时间时需要用到
-	TIM_TimeBaseStructure.TIM_ClockDivision=TIM_CKD_DIV1;		
-	// 计数器计数模式，设置为向上计数
-	TIM_TimeBaseStructure.TIM_CounterMode=TIM_CounterMode_Up;		
-	// 重复计数器的值，没用到不用管
-	TIM_TimeBaseStructure.TIM_RepetitionCounter=offset;	
-	// 初始化定时器
-	TIM_TimeBaseInit(ADVANCE_TIM8, &TIM_TimeBaseStructure);
+	ADVANCE_TIM8->RCR = (uint8_t)offset;
 }
 
 static void ADVANCE_TIM8_Mode_Config(void)
@@ -243,48 +210,95 @@ void ADVANCE_TIM_Init(void)
 }
 
 void TIM1_UP_IRQHandler(void)
-{ 	
+{
+	static uint8_t index;
+
 	if(TIM_GetITStatus(ADVANCE_TIM, TIM_IT_Update) != RESET)
 	{		
-		TIM_Cmd(ADVANCE_TIM, DISABLE);	
+		if(index == m_moto1_pwm )
+		{
+			TIM_Cmd(ADVANCE_TIM, DISABLE);
+			index = 0;
+			m_moto1_flag = 0;
+		}
+		index++;
 		TIM_ClearITPendingBit( ADVANCE_TIM, TIM_IT_Update);
 	}	 
 }
 
 void	TIM8_UP_IRQHandler(void)
 {
+	static uint8_t index;
+
 	if(TIM_GetITStatus(ADVANCE_TIM8, TIM_IT_Update) != RESET)
 	{		
-		TIM_Cmd(ADVANCE_TIM8, DISABLE);	
+		if(index == m_moto2_pwm )
+		{
+			TIM_Cmd(ADVANCE_TIM8, DISABLE);
+			index = 0;
+			m_moto2_flag = 0;
+		}
+		index++;
 		TIM_ClearITPendingBit( ADVANCE_TIM8, TIM_IT_Update);
 	}	
 }
 
-/*设置电机1旋转角度*/
-void Moto1_rotate_angle(uint16_t offset)
+/*
+*	设置电机1旋转角度
+*	offset取值为-90~90
+*/
+void Moto1_rotate_angle(int offset)
 {
-	uint16_t buf = 0;
+	char buf = 0;
+
+	buf = abs(offset)*100/45;
 	
-	buf = offset*100/45;
-	Motor_tim_config(buf);
+	while(m_moto1_flag != 0) mallms(10);
+	
+	m_moto1_pwm = buf;
+	if(offset <= 0)
+	{
+		MOTO1_REVERES();
+		g_moto1_angle -= (float)buf*0.45;
+	}
+	else
+	{
+		MOTO1_FROWARE();
+		g_moto1_angle += (float)buf*0.45;
+	}
 	TIM_Cmd(ADVANCE_TIM, ENABLE);
+	m_moto1_flag = 1;
 }
 
 /*设置电机2旋转角度*/
-void Moto2_rotate_angle(uint16_t offset)
+void Moto2_rotate_angle(int offset)
 {
-	uint16_t buf = 0;
+	char buf = 0;
+
+	buf = abs(offset)*100/45;
 	
-	buf = offset*100/45;
-	Motor_tim8_config(buf);
+	while(m_moto2_flag != 0) mallms(10);
+	
+	m_moto2_pwm = buf;
+	if(offset <= 0)
+	{
+		MOTO2_REVERES();
+		g_moto2_angle -= (float)buf*0.45;
+	}
+	else
+	{
+		MOTO2_FROWARE();
+		g_moto2_angle += (float)buf*0.45;
+	}
+	
 	TIM_Cmd(ADVANCE_TIM8, ENABLE);
+	m_moto2_flag = 1;
 }
 
 uint8_t Motor_switch(void)
 {
 	static uint8_t dat = 0;
 	static uint8_t temp = 2;
-//	static uint8_t offset = 0;
 	
 	if(GPIO_ReadInputDataBit(GPIO_KEY2_RORT,GPIO_KEY2_PIN))
 	{
@@ -292,8 +306,8 @@ uint8_t Motor_switch(void)
 		{
 			dat = 1;
 			temp--;
-			Moto1_rotate_angle(90);
-			Moto2_rotate_angle(90);
+			Moto1_rotate_angle(-90);
+			Moto2_rotate_angle(-90);
 		}
 		else if(temp == 1)
 		{

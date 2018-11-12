@@ -40,10 +40,11 @@
 .\objects\osp_fifo.o: ..\User\DMA_Drive\DMA_Drive.h
 .\objects\osp_fifo.o: ..\User\HC_05_Drive\hc_05_drive.h
 .\objects\osp_fifo.o: ..\User\OSP_fifo.h
-.\objects\osp_fifo.o: ..\UCOSII\CONFIG\includes.h
+.\objects\osp_fifo.o: ..\UCOSII\CONFIG\Includes.h
 .\objects\osp_fifo.o: D:\keil5\ARM\ARMCC\Bin\..\include\ctype.h
 .\objects\osp_fifo.o: D:\keil5\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\osp_fifo.o: D:\keil5\ARM\ARMCC\Bin\..\include\stdarg.h
+.\objects\osp_fifo.o: D:\keil5\ARM\ARMCC\Bin\..\include\math.h
 .\objects\osp_fifo.o: ..\UCOSII\CORE\ucos_ii.h
 .\objects\osp_fifo.o: ..\UCOSII\CONFIG\includes.h
 .\objects\osp_fifo.o: ..\UCOSII\CONFIG\os_cfg.h
@@ -54,3 +55,5 @@
 .\objects\osp_fifo.o: ..\User\AdvanceTim\bsp_AdvanceTim.h
 .\objects\osp_fifo.o: ..\User\DS18B20_Drive\DS18B20_Drive.h
 .\objects\osp_fifo.o: ..\User\os_task_create.h
+.\objects\osp_fifo.o: ..\app\TJ_modole\app_TJ_modole.h
+.\objects\osp_fifo.o: ..\app\BT_mod\BT_mod.h

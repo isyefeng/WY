@@ -5,6 +5,7 @@
 .\objects\os_cpu_c.o: D:\keil5\ARM\ARMCC\Bin\..\include\ctype.h
 .\objects\os_cpu_c.o: D:\keil5\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\os_cpu_c.o: D:\keil5\ARM\ARMCC\Bin\..\include\stdarg.h
+.\objects\os_cpu_c.o: D:\keil5\ARM\ARMCC\Bin\..\include\math.h
 .\objects\os_cpu_c.o: ..\UCOSII\CORE\ucos_ii.h
 .\objects\os_cpu_c.o: ..\UCOSII\CONFIG\includes.h
 .\objects\os_cpu_c.o: ..\UCOSII\CONFIG\os_cfg.h
@@ -53,3 +54,5 @@
 .\objects\os_cpu_c.o: ..\User\AdvanceTim\bsp_AdvanceTim.h
 .\objects\os_cpu_c.o: ..\User\DS18B20_Drive\DS18B20_Drive.h
 .\objects\os_cpu_c.o: ..\User\os_task_create.h
+.\objects\os_cpu_c.o: ..\app\TJ_modole\app_TJ_modole.h
+.\objects\os_cpu_c.o: ..\app\BT_mod\BT_mod.h

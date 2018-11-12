@@ -36,6 +36,7 @@
 .\objects\delay.o: D:\keil5\ARM\ARMCC\Bin\..\include\ctype.h
 .\objects\delay.o: D:\keil5\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\delay.o: D:\keil5\ARM\ARMCC\Bin\..\include\stdarg.h
+.\objects\delay.o: D:\keil5\ARM\ARMCC\Bin\..\include\math.h
 .\objects\delay.o: ..\UCOSII\CORE\ucos_ii.h
 .\objects\delay.o: ..\UCOSII\CONFIG\includes.h
 .\objects\delay.o: ..\UCOSII\CONFIG\os_cfg.h
@@ -53,3 +54,5 @@
 .\objects\delay.o: ..\User\AdvanceTim\bsp_AdvanceTim.h
 .\objects\delay.o: ..\User\DS18B20_Drive\DS18B20_Drive.h
 .\objects\delay.o: ..\User\os_task_create.h
+.\objects\delay.o: ..\app\TJ_modole\app_TJ_modole.h
+.\objects\delay.o: ..\app\BT_mod\BT_mod.h

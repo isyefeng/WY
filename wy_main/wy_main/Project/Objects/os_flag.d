@@ -6,6 +6,7 @@
 .\objects\os_flag.o: D:\keil5\ARM\ARMCC\Bin\..\include\ctype.h
 .\objects\os_flag.o: D:\keil5\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\os_flag.o: D:\keil5\ARM\ARMCC\Bin\..\include\stdarg.h
+.\objects\os_flag.o: D:\keil5\ARM\ARMCC\Bin\..\include\math.h
 .\objects\os_flag.o: ..\UCOSII\CORE\ucos_ii.h
 .\objects\os_flag.o: ..\UCOSII\PORT\os_cpu.h
 .\objects\os_flag.o: ..\UCOSII\CONFIG\os_cfg.h
@@ -48,9 +49,11 @@
 .\objects\os_flag.o: ..\User\DMA_Drive\DMA_Drive.h
 .\objects\os_flag.o: ..\User\HC_05_Drive\hc_05_drive.h
 .\objects\os_flag.o: ..\User\OSP_fifo.h
-.\objects\os_flag.o: ..\UCOSII\CONFIG\includes.h
+.\objects\os_flag.o: ..\UCOSII\CONFIG\Includes.h
 .\objects\os_flag.o: ..\SYSTEM\delay\delay.h
 .\objects\os_flag.o: ..\SYSTEM\sys\sys.h
 .\objects\os_flag.o: ..\User\AdvanceTim\bsp_AdvanceTim.h
 .\objects\os_flag.o: ..\User\DS18B20_Drive\DS18B20_Drive.h
 .\objects\os_flag.o: ..\User\os_task_create.h
+.\objects\os_flag.o: ..\app\TJ_modole\app_TJ_modole.h
+.\objects\os_flag.o: ..\app\BT_mod\BT_mod.h

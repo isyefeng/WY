@@ -40,10 +40,11 @@
 .\objects\hc_05_drive.o: ..\User\DMA_Drive\DMA_Drive.h
 .\objects\hc_05_drive.o: ..\User\HC_05_Drive\hc_05_drive.h
 .\objects\hc_05_drive.o: ..\User\OSP_fifo.h
-.\objects\hc_05_drive.o: ..\UCOSII\CONFIG\includes.h
+.\objects\hc_05_drive.o: ..\UCOSII\CONFIG\Includes.h
 .\objects\hc_05_drive.o: D:\keil5\ARM\ARMCC\Bin\..\include\ctype.h
 .\objects\hc_05_drive.o: D:\keil5\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\hc_05_drive.o: D:\keil5\ARM\ARMCC\Bin\..\include\stdarg.h
+.\objects\hc_05_drive.o: D:\keil5\ARM\ARMCC\Bin\..\include\math.h
 .\objects\hc_05_drive.o: ..\UCOSII\CORE\ucos_ii.h
 .\objects\hc_05_drive.o: ..\UCOSII\CONFIG\includes.h
 .\objects\hc_05_drive.o: ..\UCOSII\CONFIG\os_cfg.h
@@ -54,3 +55,5 @@
 .\objects\hc_05_drive.o: ..\User\AdvanceTim\bsp_AdvanceTim.h
 .\objects\hc_05_drive.o: ..\User\DS18B20_Drive\DS18B20_Drive.h
 .\objects\hc_05_drive.o: ..\User\os_task_create.h
+.\objects\hc_05_drive.o: ..\app\TJ_modole\app_TJ_modole.h
+.\objects\hc_05_drive.o: ..\app\BT_mod\BT_mod.h

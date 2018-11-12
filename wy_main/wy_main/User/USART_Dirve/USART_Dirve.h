@@ -36,5 +36,6 @@ void USART2_CONFIG(void);
 void USART_Sendbyt(USART_TypeDef* USARTx,uint16_t Data);
 void Usart_SendStr(USART_TypeDef* USARTx,unsigned char * Data);
 void BLT_USART_Config(void);
+void Usart_Drive_read( unsigned char*buf , uint32_t size);
 
 #endif /*__USART_DIRVE_H*/

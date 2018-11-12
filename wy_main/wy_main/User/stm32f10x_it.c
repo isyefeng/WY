@@ -28,7 +28,6 @@
 
 #define  bluetooth_buz_max_size 512
 
-unsigned int ucTemp;
 char bluetooth_buf[bluetooth_buz_max_size];
 
 /** @addtogroup STM32F10x_StdPeriph_Template
@@ -150,16 +149,6 @@ void EXTI0_IRQHandler (void)
 			LED_G_TOGGLE;	
 		}
 		EXTI_ClearITPendingBit(EXTI_Line0);
-}
-
-void USART1_IRQHandler(void)
-{
-
-	if(USART_GetITStatus(USART1,USART_IT_RXNE)!=RESET)
-	{		
-		ucTemp = USART_ReceiveData(USART1);
-    USART_SendData(USART1,ucTemp);    	
-	}	 
 }
 
 

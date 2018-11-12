@@ -47,15 +47,26 @@
 #define 		MOTO2_PIR_GPIO_PORT			GPIOB
 
 #define 	MOTOR_ANGLE 		90
-#define	MOTOR_ON()			TIM_Cmd(ADVANCE_TIM, ENABLE);	
-#define	MOTOR_OFF()			TIM_Cmd(ADVANCE_TIM, DISABLE);	
+#define	MOTOR1_ON()			TIM_Cmd(ADVANCE_TIM, ENABLE);	
+#define	MOTOR1_OFF()			TIM_Cmd(ADVANCE_TIM, DISABLE);	
 #define	MOTOR_TOGGLE()		digitalToggle(GPIOB, GPIO_Pin_6);
+
+#define	MOTOR2_ON()			TIM_Cmd(ADVANCE_TIM8, ENABLE);	
+#define	MOTOR2_OFF()			TIM_Cmd(ADVANCE_TIM8, DISABLE);	
+
+#define	MOTO1_FROWARE()		GPIO_SetBits(MOTO1_PIR_GPIO_PORT, ADVANCE_TIM_CH1_PIN)
+#define	MOTO1_REVERES()		GPIO_ResetBits(MOTO1_PIR_GPIO_PORT, ADVANCE_TIM_CH1_PIN)
+
+#define	MOTO2_FROWARE()		GPIO_SetBits(MOTO2_PIR_GPIO_PORT, ADVANCE_TIM8_CH1_PIN)
+#define	MOTO2_REVERES()		GPIO_ResetBits(MOTO2_PIR_GPIO_PORT, ADVANCE_TIM8_CH1_PIN)
+
 
 /**************************º¯ÊýÉùÃ÷********************************/
 
 void ADVANCE_TIM_Init(void);
-void Moto1_rotate_angle(uint16_t offset);
-void Motor_tim_config(uint16_t offset);
+void Moto1_rotate_angle(int offset);
+void Moto2_rotate_angle(int offset);
+void Motor_tim_config(int offset);
 uint8_t Motor_switch(void);
 uint8_t PWM_TUGO(void);
 

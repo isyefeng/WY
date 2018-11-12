@@ -53,6 +53,8 @@
 ".\objects\os_cpu_a.o"
 ".\objects\sys.o"
 ".\objects\delay.o"
+".\objects\bt_mod.o"
+".\objects\app_tj_modole.o"
 --library_type=microlib --strict --scatter ".\Objects\temp_project.sct"
 --summary_stderr --info summarysizes --map --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

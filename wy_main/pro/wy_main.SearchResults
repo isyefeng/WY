@@ -1,5 +1,10 @@
----- MOTO1_PIR_GPIO_PORT Matches (4 in 2 files) ----
-bsp_AdvanceTim.c (f:\finder\stm32_project\wy\wy_main\wy_main\user\advancetim):	RCC_APB2PeriphClockCmd(MOTO1_PIR_GPIO_PORT, ENABLE);
-bsp_AdvanceTim.c (f:\finder\stm32_project\wy\wy_main\wy_main\user\advancetim):	 GPIO_Init(MOTO1_PIR_GPIO_PORT, &GPIO_InitStruct);
-bsp_AdvanceTim.h (f:\finder\stm32_project\wy\wy_main\wy_main\user\advancetim):#define 		MOTO1_PIR_GPIO_PORT			RCC_APB2Periph_GPIOB
-bsp_AdvanceTim.h (f:\finder\stm32_project\wy\wy_main\wy_main\user\advancetim):#define 		MOTO1_PIR_GPIO_PORT			GPIOB
+---- m_moto1_flag Matches (2 in 1 files) ----
+bsp_AdvanceTim.c (f:\finder\stm32_project\wy\wy_main\wy_main\user\advancetim):uint8_t 	m_moto1_flag = 0;
+bsp_AdvanceTim.c (f:\finder\stm32_project\wy\wy_main\wy_main\user\advancetim)://	while(m_moto1_flag != 0) mallms(10);
+---- Moto2_rotate_angle Matches (6 in 2 files) ----
+bsp_AdvanceTim.c (f:\finder\stm32_project\wy\wy_main\wy_main\user\advancetim):void Moto2_rotate_angle(int offset)
+bsp_AdvanceTim.c (f:\finder\stm32_project\wy\wy_main\wy_main\user\advancetim):			Moto2_rotate_angle(-90);
+TJ_modole.c (f:\finder\stm32_project\wy\wy_main\wy_main\app\tj_modole):			Moto2_rotate_angle(-2);
+TJ_modole.c (f:\finder\stm32_project\wy\wy_main\wy_main\app\tj_modole):			Moto2_rotate_angle(-1);
+TJ_modole.c (f:\finder\stm32_project\wy\wy_main\wy_main\app\tj_modole):			Moto2_rotate_angle(moto2_angle);
+TJ_modole.c (f:\finder\stm32_project\wy\wy_main\wy_main\app\tj_modole):			Moto2_rotate_angle(-10);

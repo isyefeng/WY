@@ -1,7 +1,9 @@
-#include "USART_Dirve.h"
-#include "stm32f10x.h"
-#include "stdio.h"
+#include "Includes.h"
 
+extern fifo_tcb_t  _usart_fifo_tcb;
+
+uint8_t g_temperture_set = 35;
+uint8_t g_flow_set = 0;
 
 void NVIC_USART_Config(void)
 {
@@ -144,7 +146,6 @@ int fgetc(FILE *f)
 		return (int)USART_ReceiveData(USART1);
 }
 
-
 void BLT_USART_Config(void)
 {
 	GPIO_InitTypeDef GPIO_InitStructure;
@@ -184,4 +185,25 @@ void BLT_USART_Config(void)
 	USART_Cmd(BLT_USARTx, ENABLE);
 	USART_ClearFlag(BLT_USARTx, USART_FLAG_TC);
 }
+
+void USART1_IRQHandler(void)
+{
+	unsigned char ucTemp;
+	if(USART_GetITStatus(USART1,USART_IT_RXNE)!=RESET)
+	{		
+		ucTemp = USART_ReceiveData(USART1);
+ 		fifo_buffer_push( &_usart_fifo_tcb , &ucTemp , 1 );	
+	}	 
+}
+
+void Usart_Drive_read( unsigned char*buf , uint32_t size)
+{
+	uint16_t fifo_receive = 0;
+	fifo_receive = fifo_buffer_get_size(&_usart_fifo_tcb);
+	if (fifo_receive >= size)
+	{
+		fifo_buffer_pop( &_usart_fifo_tcb , buf , size);
+	}
+}
+
 
